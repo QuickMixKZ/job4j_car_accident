@@ -15,14 +15,18 @@
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Имя</th>
+            <th scope="col">Название</th>
+            <th scope="col">Описание</th>
+            <th scope="col">Адрес</th>
         </tr>
         </thead>
         <tbody>
-        <c:forEach var="user" varStatus="i" items="${users}">
+        <c:forEach var="accident" varStatus="i" items="${accidents}">
             <tr>
                 <th scope="row">${i.count}</th>
-                <td>${user}</td>
+                <td>${accident.name}</td>
+                <td>${accident.text}</td>
+                <td>${accident.address}</td>
             </tr>
         </c:forEach>
         </tbody>
