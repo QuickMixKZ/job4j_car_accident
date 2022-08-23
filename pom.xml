@@ -13,6 +13,7 @@
     <artifactId>job4j_car_accident</artifactId>
     <version>1.0</version>
     <name>Job4j Car Accident</name>
+    <packaging>war</packaging>
 
     <properties>
         <java.version>18</java.version>
