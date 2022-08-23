@@ -13,12 +13,11 @@ public class IndexController {
 
     private final AccidentService accidentService;
 
-    @Autowired
     public IndexController(AccidentService accidentService) {
         this.accidentService = accidentService;
     }
 
-    @GetMapping("/")
+    @GetMapping("/index")
     public String index(Model model) {
         model.addAttribute("accidents", accidentService.getAccidents());
         return "index";

@@ -12,12 +12,15 @@ public class AccidentService {
 
     private final AccidentMem store;
 
-    @Autowired
     public AccidentService(AccidentMem store) {
         this.store = store;
     }
 
     public List<Accident> getAccidents() {
         return store.getAccidents();
+    }
+
+    public void create(Accident accident) {
+        store.create(accident);
     }
 }
