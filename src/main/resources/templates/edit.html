@@ -16,6 +16,12 @@
             <input name="id" th:field="*{id}" type="hidden"/>
             <label for="name">Заголовок</label>
             <input class="form-control" id="name" name="name" required type="text" th:field="*{name}">
+            <div class="form-group">
+                <label for="type.id">Тип</label>
+                <select class="form-control" id="type.id" name="type.id" th:field="*{type.id}">
+                    <option th:each="type : ${types}" th:value="${type.id}" th:text="${type.name}"></option>
+                </select>
+            </div>
             <label for="text">Описание</label>
             <input class="form-control" id="text" name="text" required type="text" th:field="*{text}">
             <label for="address">Адрес</label>
