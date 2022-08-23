@@ -26,6 +26,13 @@
             <input class="form-control" id="text" name="text" required type="text" th:field="*{text}">
             <label for="address">Адрес</label>
             <input class="form-control" id="address" name="address" required type="text" th:field="*{address}">
+            <tr>
+                <td>Статьи:</td>
+                <td>
+                    <select name="rIds" multiple>
+                        <option th:each="entry : ${rules}" th:selected="${entry.value}" th:value="${entry.key.id}" th:text="${entry.key.name}"></option>
+                    </select>
+            </tr>
             <button class="btn btn-success" type="submit">Сохранить</button>
         </div>
     </form>
