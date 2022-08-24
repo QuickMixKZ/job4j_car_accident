@@ -51,7 +51,7 @@ public class AccidentController {
             rules.add(accidentService.findRuleById(Integer.parseInt(stringId)));
         }
         accident.setRules(rules);
-        accidentService.create(accident);
+        accidentService.save(accident);
         return "redirect:/index";
     }
 

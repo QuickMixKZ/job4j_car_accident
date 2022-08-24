@@ -61,7 +61,7 @@ public class AccidentMem {
         return new ArrayList<>(accidentTypes.values());
     }
 
-    public void create(Accident accident) {
+    public void save(Accident accident) {
         if (accident.getId() == 0) {
             accident.setId(id.incrementAndGet());
         }

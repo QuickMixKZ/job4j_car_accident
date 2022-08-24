@@ -22,8 +22,8 @@ public class AccidentService {
         return store.getAccidents();
     }
 
-    public void create(Accident accident) {
-        store.create(accident);
+    public void save(Accident accident) {
+        store.save(accident);
     }
 
     public Accident findAccidentById(int id) {
