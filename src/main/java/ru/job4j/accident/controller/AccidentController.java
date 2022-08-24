@@ -26,9 +26,9 @@ public class AccidentController {
         return "create";
     }
 
-    @GetMapping("/edit")
-    public String edit(Model model, @RequestParam int id) {
-        Accident accident = accidentService.findAccidentById(id);
+    @GetMapping("/edit/{accidentId}")
+    public String edit(Model model, @PathVariable int accidentId) {
+        Accident accident = accidentService.findAccidentById(accidentId);
         model.addAttribute("accident", accident);
         model.addAttribute("types", accidentService.getAccidentsType());
         Map<Rule, Boolean> rules = new TreeMap<>(Comparator.comparingInt(Rule::getId));
