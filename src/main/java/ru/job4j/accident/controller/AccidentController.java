@@ -26,9 +26,9 @@ public class AccidentController {
         return "create";
     }
 
-    @GetMapping("/edit/{accidentId}")
-    public String edit(Model model, @PathVariable int accidentId) {
-        Accident accident = accidentService.findAccidentById(accidentId);
+    @GetMapping("/edit/{id}")
+    public String edit(Model model, @PathVariable int id) {
+        Accident accident = accidentService.findAccidentById(id);
         model.addAttribute("accident", accident);
         model.addAttribute("types", accidentService.getAccidentsType());
         Map<Rule, Boolean> rules = new TreeMap<>(Comparator.comparingInt(Rule::getId));
@@ -42,7 +42,7 @@ public class AccidentController {
         return "edit";
     }
 
-    @PostMapping("/save")
+    @PostMapping("/add")
     public String save(@ModelAttribute Accident accident,
                        @RequestParam String[] rIds) {
         accident.setType(accidentService.findAccidentTypeById(accident.getType().getId()));
@@ -51,7 +51,20 @@ public class AccidentController {
             rules.add(accidentService.findRuleById(Integer.parseInt(stringId)));
         }
         accident.setRules(rules);
-        accidentService.save(accident);
+        accidentService.add(accident);
+        return "redirect:/index";
+    }
+
+    @PostMapping("/update")
+    public String update(@ModelAttribute Accident accident,
+                       @RequestParam String[] rIds) {
+        accident.setType(accidentService.findAccidentTypeById(accident.getType().getId()));
+        Set<Rule> rules = new HashSet<>();
+        for (String stringId : rIds) {
+            rules.add(accidentService.findRuleById(Integer.parseInt(stringId)));
+        }
+        accident.setRules(rules);
+        accidentService.update(accident);
         return "redirect:/index";
     }
 

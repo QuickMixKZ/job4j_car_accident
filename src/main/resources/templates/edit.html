@@ -10,7 +10,7 @@
 </head>
 <body>
 <div class="container px-4">
-    <form th:action="@{/save}" th:method="POST" th:object="${accident}">
+    <form th:action="@{/update}" th:method="POST" th:object="${accident}">
         <legend th:text="'Редактирование инцидента'"></legend>
         <div class="form-group; row gy-1">
             <input name="id" th:field="*{id}" type="hidden"/>
@@ -29,7 +29,7 @@
             <tr>
                 <td>Статьи:</td>
                 <td>
-                    <select name="rIds" multiple>
+                    <select required name="rIds" multiple>
                         <option th:each="entry : ${rules}" th:selected="${entry.value}" th:value="${entry.key.id}" th:text="${entry.key.name}"></option>
                     </select>
             </tr>

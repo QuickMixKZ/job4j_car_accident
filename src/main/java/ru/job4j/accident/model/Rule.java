@@ -1,11 +1,20 @@
 package ru.job4j.accident.model;
 
+import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
+@Entity
+@Table(name = "rule")
 public class Rule {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
+    @ManyToMany(mappedBy = "rules")
+    private Set<Accident> accidents = new HashSet<>();
 
     public static Rule of(int id, String name) {
         Rule rule = new Rule();

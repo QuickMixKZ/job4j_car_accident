@@ -10,7 +10,7 @@
 </head>
 <body>
 <div class="container px-4">
-    <form th:action="@{/save}" th:method="POST">
+    <form th:action="@{/add}" th:method="POST">
         <legend th:text="'Добавление инцидента'"></legend>
         <div class="form-group; row gy-1">
             <label for="name">Название</label>
@@ -28,7 +28,7 @@
             <tr>
                 <td>Статьи:</td>
                 <td>
-                    <select name="rIds" multiple>
+                    <select required name="rIds" multiple>
                             <option th:each="rule : ${rules}" th:value="${rule.id}" th:text="${rule.name}"></option>
                     </select>
             </tr>

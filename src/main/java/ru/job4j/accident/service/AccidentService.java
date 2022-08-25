@@ -1,20 +1,19 @@
 package ru.job4j.accident.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.job4j.accident.model.Accident;
 import ru.job4j.accident.model.AccidentType;
 import ru.job4j.accident.model.Rule;
-import ru.job4j.accident.repository.AccidentMem;
+import ru.job4j.accident.repository.AccidentHibernate;
 
 import java.util.List;
 
 @Service
 public class AccidentService {
 
-    private final AccidentMem store;
+    private final AccidentHibernate store;
 
-    public AccidentService(AccidentMem store) {
+    public AccidentService(AccidentHibernate store) {
         this.store = store;
     }
 
@@ -22,8 +21,12 @@ public class AccidentService {
         return store.getAccidents();
     }
 
-    public void save(Accident accident) {
-        store.save(accident);
+    public void add(Accident accident) {
+        store.add(accident);
+    }
+
+    public void update(Accident accident) {
+        store.update(accident);
     }
 
     public Accident findAccidentById(int id) {
