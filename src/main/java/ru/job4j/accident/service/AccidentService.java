@@ -4,48 +4,38 @@ import org.springframework.stereotype.Service;
 import ru.job4j.accident.model.Accident;
 import ru.job4j.accident.model.AccidentType;
 import ru.job4j.accident.model.Rule;
-import ru.job4j.accident.repository.AccidentHibernate;
+import ru.job4j.accident.repository.AccidentRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AccidentService {
 
-    private final AccidentHibernate store;
+    private final AccidentRepository store;
 
-    public AccidentService(AccidentHibernate store) {
+    public AccidentService(AccidentRepository store) {
         this.store = store;
     }
 
     public List<Accident> getAccidents() {
-        return store.getAccidents();
+        return (List<Accident>) store.findAll();
     }
 
     public void add(Accident accident) {
-        store.add(accident);
+        store.save(accident);
     }
 
     public void update(Accident accident) {
-        store.update(accident);
+        store.save(accident);
     }
 
-    public Accident findAccidentById(int id) {
-        return store.findAccidentById(id);
+    public Optional<Accident> findAccidentById(int id) {
+        return store.findById(id);
     }
 
-    public AccidentType findAccidentTypeById(int id) {
-        return store.findAccidentTypeById(id);
+    public void delete(Accident accident) {
+        store.delete(accident);
     }
 
-    public List<AccidentType> getAccidentsType() {
-        return store.getAccidentsType();
-    }
-
-    public Rule findRuleById(int id) {
-        return store.findRuleById(id);
-    }
-
-    public List<Rule> getRules() {
-        return store.getRules();
-    }
 }
