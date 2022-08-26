@@ -22,7 +22,7 @@ public class AccidentHibernate {
     }
 
     public List<Accident> getAccidents() {
-        return tx(session -> session.createQuery("from Accident").getResultList());
+        return tx(session -> session.createQuery("from Accident a join fetch a.rules r join fetch a.type t").getResultList());
     }
 
     public List<AccidentType> getAccidentsType() {
